@@ -1,0 +1,7 @@
+users (has_many user_favorites)
+user_favorites (a user can have many favorites of type=sport, or type=league. is a polymorphic table)
+sports (name=basketball,hockey,etc.). has many leagues
+leagues (name=NHL). belongs to one sport (has_many teams)
+matches (belongs_to 1 sport, belongs_to 1 league, belongs to 2 teams) (schema: sport_id, league_id, team1_id, team2_id, match_datetime)
+teams (has_many matches through team1_id or team2_id, belongs to 1 league) (schema: name, league_id, sport_id) (belongs to 1 sport)
+
