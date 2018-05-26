@@ -5,4 +5,6 @@ class Sport < ApplicationRecord
 
 	belongs_to :user_favorite, primary_key: 'favorite_id', foreign_key: 'id'
 
+  validates :name, presence: true
+
 end
