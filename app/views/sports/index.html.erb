@@ -1,0 +1,31 @@
+
+<div class="container">
+
+  <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a class="nav-link active home-tab" href="#">Home</a>
+    </li>
+
+    <% @sports.each do |sport| %>
+      <li class="nav-item">
+        <%= link_to sport.name, sport_path(id: sport.id), class: "nav-link #{sport.name}-tab" , remote: true%>
+      </li>
+    <% end %>
+
+  </ul>
+
+  
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div class="tab-pane container active" id="home">home content</div>
+    <% @sports.each do |sport| %>
+      <div class="tab-pane container <%= sport.name %>-tab">
+        <%= render partial: 'sports/show', object: sport, as: :sport %>
+      </div>
+    <% end %>
+  </div>
+
+</div>
+
+
