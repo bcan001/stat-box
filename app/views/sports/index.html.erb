@@ -1,7 +1,7 @@
 
 <div class="container">
 
-  <ul class="nav nav-tabs">
+  <ul class="nav nav-tabs pad20-top">
     <li class="nav-item">
       <a class="nav-link active home-tab" href="#">Home</a>
     </li>
@@ -15,9 +15,8 @@
   </ul>
 
   
-
   <!-- Tab panes -->
-  <div class="tab-content">
+  <div class="tab-content pad20-top">
     <div class="tab-pane container active" id="home">home content</div>
     <% @sports.each do |sport| %>
       <div class="tab-pane container <%= sport.name %>-tab">
