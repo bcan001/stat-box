@@ -1,2 +1,46 @@
-<%= sport.name %>
-<%= sport.attributes %>
+
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12 col-md-3">
+      
+      <div class="card pad10-top">
+        <div class="card-body">
+          <%= link_to 'My Favorites', root_path %>
+
+          <div class="pad20-top">
+            <h5>Leagues:</h5>
+            <nav class="nav flex-column">
+              
+            </nav>
+          </div>
+
+
+
+        </div>
+      </div>
+
+
+    </div>
+    <div class="col-sm-12 col-md-7">
+      <div class="pad10-top">
+
+				Stat-Box > <%= sport.name %>
+
+				<h5 class="pad20-top">
+					<%= sport.name %> Stats, Tables, Standings & Results
+				</h5>
+
+      </div>
+    </div>
+    <div class="col-sm-12 col-md-2">
+      
+      <div class="card pad10-top">
+        <div class="card-body">
+          <p>Now on Stat-Box</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
