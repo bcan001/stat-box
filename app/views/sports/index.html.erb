@@ -1,5 +1,5 @@
 
-<div class="container">
+<div class="container-fluid">
 
   <ul class="nav nav-tabs pad20-top">
     <li class="nav-item">
@@ -12,14 +12,77 @@
       </li>
     <% end %>
 
+    <li  style="float: right; margin-left: auto;">
+      &nbsp;
+    </li>
+
   </ul>
 
   
   <!-- Tab panes -->
   <div class="tab-content pad20-top">
-    <div class="tab-pane container active" id="home">home content</div>
+    <div class="tab-pane container-fluid active" id="home">
+      
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-sm-12 col-md-3">
+            
+            <div class="card pad10-top">
+              <div class="card-body">
+
+                <form class="form-inline pad20-bottom">
+                  <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" style="width:60%;">
+                  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+
+                <%= link_to 'My Favorites', root_path %>
+
+          
+
+
+                <div class="pad20-top">
+                  <h5>SPORTS:</h5>
+                  <nav class="nav flex-column">
+                    <% @sports.each do |sport| %>
+                      <%= link_to sport.name, sport_path(id: sport.id), class: "nav-link #{sport.name}-tab" , remote: true%>
+                    <% end %>
+                  </nav>
+                </div>
+
+
+              </div>
+            </div>
+
+
+          </div>
+          <div class="col-sm-12 col-md-7">
+            <div class="pad10-top">
+        
+              <h5>
+                STAT-BOX - Accurate Sports Statistics
+              </h5>
+            </div>
+          </div>
+          <div class="col-sm-12 col-md-2">
+            
+            <div class="card pad10-top">
+              <div class="card-body">
+                <p>Now on Stat-Box</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+
+    </div>
     <% @sports.each do |sport| %>
-      <div class="tab-pane container <%= sport.name %>-tab">
+      <div class="tab-pane container-fluid <%= sport.name %>-tab">
         <%= render partial: 'sports/show', object: sport, as: :sport %>
       </div>
     <% end %>
