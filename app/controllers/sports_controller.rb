@@ -2,6 +2,11 @@ class SportsController < ApplicationController
 
 	def index
 		@sports = Sport.all
+
+		# sports
+			# leagues
+				# matches
+
 	end
 
 	def show
