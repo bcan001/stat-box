@@ -3,10 +3,10 @@
 
   <ul class="nav nav-tabs pad20-top">
     <li class="nav-item">
-      <a class="nav-link active home-tab" href="#">Home</a>
+      <%= link_to 'Home', sports_path(home: 'home'), class: 'nav-link active home-tab', remote: true %>
     </li>
 
-    <% @sports.each do |sport| %>
+    <% @sports_objects.each do |sport| %>
       <li class="nav-item">
         <%= link_to sport.name, sport_path(id: sport.id), class: "nav-link #{sport.name}-tab" , remote: true %>
       </li>
@@ -38,7 +38,7 @@
             <div class="pad20-top">
               <h5>SPORTS:</h5>
               <nav class="nav flex-column">
-                <% @sports.each do |sport| %>
+                <% @sports_objects.each do |sport| %>
                   <%= link_to sport.name, sport_path(id: sport.id), class: "nav-link #{sport.name}-tab" , remote: true %>
                 <% end %>
               </nav>
@@ -55,6 +55,17 @@
           <h5>
             STAT-BOX - Accurate Sports Statistics
           </h5>
+
+          <!-- vue js divs / data import from rails controllers -->
+          <%= content_tag :div,
+            nil,
+            id: "sports",
+            data: { 
+              sports: @sports.to_json.html_safe
+            }
+          %>
+          <div id="index-new"></div>
+
         </div>
       </div>
       <div class="col-sm-12 col-md-2">
@@ -64,39 +75,7 @@
             <p>Now on Stat-Box</p>
 
 
-            <!-- vue js divs / data import from rails controllers -->
-            <%= content_tag :div,
-              nil,
-              id: "route_prefix",
-              data: { 
-                route_prefix: @route_prefix
-              }
-            %>
-
-            <%= content_tag :div,
-              nil,
-              id: "app_name",
-              data: { 
-                app_name: @app_name
-              }
-            %>
-
-            <%= content_tag :div,
-              nil,
-              id: "documents",
-              data: { 
-                documents: @documents
-              }
-            %>
-
-            <%= content_tag :div,
-              nil,
-              id: "total_documents",
-              data: { 
-                total_documents: @total_documents
-              }
-            %>
-
+            
 
 
           </div>
