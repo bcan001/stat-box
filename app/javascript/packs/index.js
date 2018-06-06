@@ -9,12 +9,13 @@
 
 // custom components
 import Vue from 'vue/dist/vue.esm'
+// import Vue from 'vue'
 import Index from '../components/index.vue'
 
 // import custom nested components
-import Sports from '../components/sports.vue'
-import Leagues from '../components/leagues.vue'
-import Matches from '../components/matches.vue'
+// import Sports from '../components/sports.vue'
+// import Leagues from '../components/leagues.vue'
+// import Matches from '../components/matches.vue'
 
 
 // node js components installed with npm
@@ -26,28 +27,17 @@ import Matches from '../components/matches.vue'
 document.addEventListener('DOMContentLoaded', () => {
   document.body.appendChild(document.createElement('index'))
 
-  let routePrefixElement = document.getElementById("route_prefix")
-  let routePrefix = routePrefixElement.dataset['routePrefix']
+  let sportsElement = document.getElementById("sports");
+  let sports = JSON.parse(sportsElement.dataset.sports);
 
-  let appNameElement = document.getElementById("app_name")
-  let appName = appNameElement.dataset['appName']
-
-  let element = document.getElementById("documents")
-  let documents = JSON.parse(element.dataset.documents)
-
-  let totalDocumentsElement = document.getElementById("total_documents")
-  let totalDocuments = totalDocumentsElement.dataset['totalDocuments']
-
+  // console.log(sports);
 
   const index = new Vue({
     el: 'index',
     data: {
-      route_prefix: routePrefix,
-      app_name: appName,
-    	documents: documents,
-      total_documents: totalDocuments
+      sports: sports
     },
-    template: '<Index :route_prefix="route_prefix" :app_name="app_name" :documents="documents" :total_documents="total_documents"/>',
+    template: '<Index :sports="sports"/>',
     components: { 
       Index
     }
@@ -55,9 +45,9 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 // register custom nested components here
-Vue.component('sports',Sports)
-Vue.component('leagues',Leagues)
-Vue.component('matches',Matches)
+// Vue.component('sports',Sports)
+// Vue.component('leagues',Leagues)
+// Vue.component('matches',Matches)
 
 
 // node js
