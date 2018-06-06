@@ -33,7 +33,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // console.log(sports);
 
   const index = new Vue({
-    el: 'index',
+    // el: 'index',
+    el: '#index-new',
     data: {
       sports: sports
     },
