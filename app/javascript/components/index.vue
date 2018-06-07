@@ -5,12 +5,12 @@
 
       <ul class="nav nav-tabs pad20-top">
         <li class="nav-item">
-          <a v-on:click="getSelectedSport(sport)" class="nav-link active home-tab">home</a>
+          <a v-on:click="getSelectedSport('home')" class="nav-link active home-tab">home</a>
         </li>
 
-        <div v-for="sport in selected_sports">
+        <div v-for="sport in original_sports">
           <li class="nav-item">
-            <a v-on:click="getSelectedSport(sport)" class="nav-link sport-tab">{{sport.name}}</a>
+            <a v-on:click="getSelectedSport(sport.name)" class="nav-link" v-bind:class="sport.name + '-tab'">{{sport.name}}</a>
           </li>
         </div>
 
@@ -38,9 +38,8 @@
                   <h5>SPORTS:</h5>
                   <nav class="nav flex-column">
                  
-                    <div v-for="sport in selected_sports">
-                      <a v-on:click="getSelectedSport(sport)" class="nav-link">{{sport.name}}</a>
-
+                    <div v-for="sport in original_sports">
+                      <a v-on:click="getSelectedSport(sport.name)" class="nav-link" v-bind:class="sport.name + '-tab'">{{sport.name}}</a>
                     </div>
                   </nav>
                 </div>
@@ -53,23 +52,49 @@
           <div class="col-sm-12 col-md-7">
             <div class="pad10-top">
         
-              <h5>
+              <h5 class="pad20-bottom">
                 STAT-BOX - Accurate Sports Statistics
               </h5>
 
               <div v-for="sport in selected_sports">
-                <p>{{sport.name}}</p>
+                <h4>{{sport.name}}</h4>
 
-                <div v-for="league in sport.leagues">
-                  {{league.name}}
+                <ul class="nav nav-tabs pad10-top">
+                  <div v-for="(league,index) in sport.leagues">
+                     
+                    <li class="nav-item">
+                      <a v-on:click="getSelectedSportLeague(sport.name,league.name)" class="nav-link" v-bind:class="sport.name + '-tab ' + league.name + '-tab'" v-bind:id="league.name + '-tab'">{{league.name}}</a>
+                    </li>
+                   
+                    <li  style="float: right; margin-left: auto;">
+                      &nbsp;
+                    </li>
+                    
+                  </div>
+                
+                </ul>
 
-                  <div v-for="team in league.teams">
-                    {{team.name}}
+
+       
+
+                <div class="tab-content" id="myTabContent">
+                  <div v-for="league in sport.leagues" class="pad10-top">
+
+                    <div class="tab-pane fade active show" v-bind:id="league.name" role="tabpanel" v-bind:aria-labelledby="league.name + '-tab'">
+                      <div v-for="match in league.matches">
+                        {{match.match_datetime}}
+
+                        {{match.team1.name}} vs {{match.team2.name}}
+                      </div>
+                    </div>
+  
 
                   </div>
-
                 </div>
-             
+
+
+
+
 
                 <hr>
               </div>
@@ -115,8 +140,19 @@
     },
     methods: {
       getSelectedSport: function(sport) {
-        console.log(sport.name);
+        // console.log(sport.name);
+        $(".active").removeClass('active');
+        $("." + sport + "-tab").addClass('active');
 
+        if (sport == 'home') {
+          this.selected_sports = this.original_sports;
+        } else {
+          this.selected_sports = this.original_sports.filter(function (s) { return s.name.match(sport); });;
+        }
+      },
+      getSelectedSportLeague: function(sport,league) {
+        console.log(league);
+        console.log(sport);
       }
     },
     watch: {
@@ -139,7 +175,18 @@
   //   console.log(pageCount);
   //   return pageCount;
   // }
+
+  $(document).ready(function(){
+    // $('#NHL-tab:first').addClass('active');
+    // $('#NHL:first').addClass('show');
+
+    // $('.league-tab:first').addClass('active');
+    // $('.league:first').addClass('show');
+  })
 </script>
+
+
+
 
 
 
