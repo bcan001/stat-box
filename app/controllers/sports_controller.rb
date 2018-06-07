@@ -39,14 +39,34 @@ class SportsController < ApplicationController
 				end
 				@leagues_json << league_json
 				sport_json.merge!('leagues' => @leagues_json)
-				@teams_json = []
-				league.teams.each do |team|
-					team_json = {}
-					team.attributes.each do |key,val|
-						team_json.merge!(key => val)
+				@matches_json = []
+				league.matches.each do |match|
+					match_json = {}
+					match.attributes.each do |key,val|
+						match_json.merge!(key => val)
 					end
-					@teams_json << team_json
-					league_json.merge!('teams' => @teams_json)
+					
+					
+					# @teams_json = []
+					team1_json = {}
+					match.team1.attributes.each do |key,val|
+						team1_json.merge!(key => val)
+					end
+					# @teams_json << team1_json
+	
+					team2_json = {}
+					match.team2.attributes.each do |key,val|
+						team2_json.merge!(key => val)
+					end
+					# @teams_json << team2_json
+			
+					match_json.merge!('team1' => team1_json)
+					match_json.merge!('team2' => team2_json)
+
+
+					@matches_json << match_json
+
+					league_json.merge!('matches' => @matches_json)
 				end
 			end
 			@sports_json << sport_json
