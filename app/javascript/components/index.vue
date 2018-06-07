@@ -5,12 +5,12 @@
 
       <ul class="nav nav-tabs pad20-top">
         <li class="nav-item">
-          <a v-on:click="getSelectedSport('home')" class="nav-link active home-tab">home</a>
+          <a v-on:click="getSelectedSport('home')" class="nav-link active home-upper-tab upper-tab">home</a>
         </li>
 
         <div v-for="sport in original_sports">
           <li class="nav-item">
-            <a v-on:click="getSelectedSport(sport.name)" class="nav-link" v-bind:class="sport.name + '-tab'">{{sport.name}}</a>
+            <a v-on:click="getSelectedSport(sport.name)" class="nav-link upper-tab" v-bind:class="sport.name + '-upper-tab'">{{sport.name}}</a>
           </li>
         </div>
 
@@ -39,7 +39,7 @@
                   <nav class="nav flex-column">
                  
                     <div v-for="sport in original_sports">
-                      <a v-on:click="getSelectedSport(sport.name)" class="nav-link" v-bind:class="sport.name + '-tab'">{{sport.name}}</a>
+                      <a v-on:click="getSelectedSport(sport.name)" class="nav-link upper-tab" v-bind:class="sport.name + '-upper-tab'">{{sport.name}}</a>
                     </div>
                   </nav>
                 </div>
@@ -56,14 +56,14 @@
                 STAT-BOX - Accurate Sports Statistics
               </h5>
 
-              <div v-for="sport in selected_sports">
+              <div v-for="sport in selected_sports" class="sport-content" v-bind:id="sport.name + '-container'">
                 <h4>{{sport.name}}</h4>
 
                 <ul class="nav nav-tabs pad10-top">
                   <div v-for="(league,index) in sport.leagues">
                      
                     <li class="nav-item">
-                      <a v-on:click="getSelectedSportLeague(sport.name,league.name)" class="nav-link" v-bind:class="sport.name + '-tab ' + league.name + '-tab'" v-bind:id="league.name + '-tab'">{{league.name}}</a>
+                      <a v-on:click="getSelectedSportLeague(sport.name,league.name)" class="nav-link league-link" v-bind:class="sport.name + '-tab ' + league.name + '-tab'" v-bind:id="league.name + '-tab'">{{league.name}}</a>
                     </li>
                    
                     <li  style="float: right; margin-left: auto;">
@@ -77,10 +77,10 @@
 
        
 
-                <div class="tab-content" id="myTabContent">
-                  <div v-for="league in sport.leagues" class="pad10-top">
+                <div class="tab-content pad10-top" id="myTabContent">
+                  <div v-for="league in sport.leagues">
 
-                    <div class="tab-pane fade active show" v-bind:id="league.name" role="tabpanel" v-bind:aria-labelledby="league.name + '-tab'">
+                    <div class="tab-pane fade league-content" v-bind:id="league.name" role="tabpanel" v-bind:aria-labelledby="league.name + '-tab'">
                       <div v-for="match in league.matches">
                         {{match.match_datetime}}
 
@@ -140,19 +140,36 @@
     },
     methods: {
       getSelectedSport: function(sport) {
-        // console.log(sport.name);
-        $(".active").removeClass('active');
-        $("." + sport + "-tab").addClass('active');
+        $(".upper-tab").removeClass('active');
+        $("." + sport + "-upper-tab").addClass('active');
+
 
         if (sport == 'home') {
           this.selected_sports = this.original_sports;
         } else {
           this.selected_sports = this.original_sports.filter(function (s) { return s.name.match(sport); });;
         }
+
+
+        $(document).ready(function(){
+          // initialize first tabs to be active
+          $('.sport-content').each(function(){
+            var $this = $(this);
+            $this.find(".league-link").first().addClass('active');
+            $this.find(".league-content").first().addClass('active show').attr('style','');
+          });
+        })
+
       },
       getSelectedSportLeague: function(sport,league) {
         console.log(league);
         console.log(sport);
+
+        $('.' + sport + '-tab.active').removeClass('active');
+        $('.' + sport + '-tab.' + league + '-tab').addClass('active');
+        $('#' + sport + '-container .league-content').removeClass('active show').attr('style','display:none;');
+        $('#' + league).addClass('active show').attr('style','');
+
       }
     },
     watch: {
@@ -177,11 +194,12 @@
   // }
 
   $(document).ready(function(){
-    // $('#NHL-tab:first').addClass('active');
-    // $('#NHL:first').addClass('show');
-
-    // $('.league-tab:first').addClass('active');
-    // $('.league:first').addClass('show');
+    // initialize first tabs to be active
+    $('.sport-content').each(function(){
+      var $this = $(this);
+      $this.find(".league-link").first().addClass('active');
+      $this.find(".league-content").first().addClass('active show').attr('style','');
+    });
   })
 </script>
 

@@ -22,7 +22,6 @@ team4 = league2.teams.build(name: 'Chicago Steel', sport_id: 1)
 team4.save
 
 
-
 league3 = sport2.leagues.build(name: 'NBA')
 league3.save
 
@@ -31,6 +30,23 @@ team5.save
 team6 = league3.teams.build(name: 'Detroit Pistons', sport_id: 2)
 team6.save
 
+
+league4 = sport3.leagues.build(name: 'NFL')
+league4.save
+
+team7 = league4.teams.build(name: 'Seattle Seahawks', sport_id: 3)
+team7.save
+team8 = league4.teams.build(name: 'Chicago Bears', sport_id: 3)
+team8.save
+
+
+league5 = sport3.leagues.build(name: 'CFL')
+league5.save
+
+team9 = league5.teams.build(name: 'Saskatoon Bulls', sport_id: 3)
+team9.save
+team10 = league5.teams.build(name: 'Ontario MudSlingers', sport_id: 3)
+team10.save
 
 
 
@@ -44,9 +60,18 @@ match2.save
 
 match3 = league3.matches.build(match_datetime: Time.now.to_datetime, sport_id: 2, team1_id: team5.id, team2_id: team6.id)
 match3.save
+match3 = league3.matches.build(match_datetime: Time.now.to_datetime, sport_id: 2, team1_id: team5.id, team2_id: team6.id)
+match3.save
 
-match4 = league3.matches.build(match_datetime: Time.now.to_datetime, sport_id: 2, team1_id: team5.id, team2_id: team6.id)
+
+match4 = league4.matches.build(match_datetime: Time.now.to_datetime, sport_id: 3, team1_id: team7.id, team2_id: team8.id)
 match4.save
+
+match5 = league4.matches.build(match_datetime: Time.now.to_datetime, sport_id: 3, team1_id: team7.id, team2_id: team8.id)
+match5.save
+
+match6 = league5.matches.build(match_datetime: Time.now.to_datetime, sport_id: 3, team1_id: team9.id, team2_id: team10.id)
+match6.save
 
 
 
@@ -55,5 +80,11 @@ user_favorite1.save
 
 user_favorite2 = user.user_favorites.build(favorite_type: 'league', favorite_id: league1.id)
 user_favorite2.save
+
+
+
+
+
+
 
 
