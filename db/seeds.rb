@@ -53,7 +53,19 @@ team10.save
 
 match1 = league1.matches.build(match_datetime: Time.now.to_datetime, sport_id: 1, team1_id: team1.id, team2_id: team2.id)
 match1.save
+match1 = league1.matches.build(match_datetime: Time.now.to_datetime, sport_id: 1, team1_id: team1.id, team2_id: team2.id)
+match1.save
+match1 = league1.matches.build(match_datetime: Time.now.to_datetime, sport_id: 1, team1_id: team1.id, team2_id: team2.id)
+match1.save
+match1 = league1.matches.build(match_datetime: Time.now.to_datetime, sport_id: 1, team1_id: team1.id, team2_id: team2.id)
+match1.save
+match1 = league1.matches.build(match_datetime: Time.now.to_datetime, sport_id: 1, team1_id: team1.id, team2_id: team2.id)
+match1.save
 
+match2 = league2.matches.build(match_datetime: Time.now.to_datetime, sport_id: 1, team1_id: team3.id, team2_id: team4.id)
+match2.save
+match2 = league2.matches.build(match_datetime: Time.now.to_datetime, sport_id: 1, team1_id: team3.id, team2_id: team4.id)
+match2.save
 match2 = league2.matches.build(match_datetime: Time.now.to_datetime, sport_id: 1, team1_id: team3.id, team2_id: team4.id)
 match2.save
 
@@ -66,10 +78,22 @@ match3.save
 
 match4 = league4.matches.build(match_datetime: Time.now.to_datetime, sport_id: 3, team1_id: team7.id, team2_id: team8.id)
 match4.save
+match4 = league4.matches.build(match_datetime: Time.now.to_datetime, sport_id: 3, team1_id: team7.id, team2_id: team8.id)
+match4.save
+match4 = league4.matches.build(match_datetime: Time.now.to_datetime, sport_id: 3, team1_id: team7.id, team2_id: team8.id)
+match4.save
+match4 = league4.matches.build(match_datetime: Time.now.to_datetime, sport_id: 3, team1_id: team7.id, team2_id: team8.id)
+match4.save
 
 match5 = league4.matches.build(match_datetime: Time.now.to_datetime, sport_id: 3, team1_id: team7.id, team2_id: team8.id)
 match5.save
+match5 = league4.matches.build(match_datetime: Time.now.to_datetime, sport_id: 3, team1_id: team7.id, team2_id: team8.id)
+match5.save
 
+match6 = league5.matches.build(match_datetime: Time.now.to_datetime, sport_id: 3, team1_id: team9.id, team2_id: team10.id)
+match6.save
+match6 = league5.matches.build(match_datetime: Time.now.to_datetime, sport_id: 3, team1_id: team9.id, team2_id: team10.id)
+match6.save
 match6 = league5.matches.build(match_datetime: Time.now.to_datetime, sport_id: 3, team1_id: team9.id, team2_id: team10.id)
 match6.save
 

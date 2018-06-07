@@ -82,9 +82,23 @@
 
                     <div class="tab-pane fade league-content" v-bind:id="league.name" role="tabpanel" v-bind:aria-labelledby="league.name + '-tab'">
                       <div v-for="match in league.matches">
-                        {{match.match_datetime}}
 
-                        {{match.team1.name}} vs {{match.team2.name}}
+                        <div class="row">
+                          <div class="col-sm-4">
+
+                            <a v-bind:href="'http://localhost:3000/matches/' + match.id">
+                              {{match.team1.name}} vs {{match.team2.name}}
+                            </a>
+                            
+
+                          </div>
+                          <div class="col-sm-8">
+                            {{ formatDate(match.match_datetime) }}
+                          </div>
+                        </div>
+                        
+
+                        
                       </div>
                     </div>
   
@@ -170,6 +184,11 @@
         $('#' + sport + '-container .league-content').removeClass('active show').attr('style','display:none;');
         $('#' + league).addClass('active show').attr('style','');
 
+      },
+      formatDate: function(date) {
+        var newDate = new Date(date);
+        newDate = newDate.strftime("%A %B %d, %I:%M %p");
+        return newDate;
       }
     },
     watch: {
