@@ -80,11 +80,11 @@
                 <div class="tab-content pad10-top" id="myTabContent">
                   <div v-for="league in sport.leagues">
 
-                    <div class="tab-pane fade league-content" v-bind:id="league.name" role="tabpanel" v-bind:aria-labelledby="league.name + '-tab'">
+                    <div class="tab-pane fade league-content" v-bind:id="league.name" role="tabpanel" v-bind:aria-labelledby="league.name + '-tab'" style="display:none;">
                       <div v-for="match in league.matches">
 
                         <div class="row">
-                          <div class="col-sm-4">
+                          <div class="col-sm-6">
 
                             <a v-bind:href="'http://localhost:3000/matches/' + match.id">
                               {{match.team1.name}} vs {{match.team2.name}}
@@ -92,7 +92,7 @@
                             
 
                           </div>
-                          <div class="col-sm-8">
+                          <div class="col-sm-6">
                             {{ formatDate(match.match_datetime) }}
                           </div>
                         </div>
