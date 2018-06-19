@@ -76,7 +76,7 @@
 
 
        
-
+                <!-- matches -->
                 <div class="tab-content pad10-top" id="myTabContent">
                   <div v-for="league in sport.leagues">
 
@@ -169,6 +169,7 @@
           // initialize first tabs to be active
           $('.sport-content').each(function(){
             var $this = $(this);
+            $this.find(".league-link").removeClass('active');
             $this.find(".league-link").first().addClass('active');
             $this.find(".league-content").first().addClass('active show').attr('style','');
           });
