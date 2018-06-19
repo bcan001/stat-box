@@ -1,0 +1,17 @@
+# INSTALLING THE TEST SUITE:
+# https://github.com/mplewis/rails-vue-frontend-test-example
+
+# Test runner: Karma
+# Test framework: Mocha
+# Assertions: Chai
+# Mocking: Sinon
+# Vue component testing: avoriaz
+# Browser: jsdom
+# Compiler: Webpack
+
+# yarn test
+
+# sinon js
+# https://www.sitepoint.com/sinon-tutorial-javascript-testing-mocks-spies-stubs/
+
+
