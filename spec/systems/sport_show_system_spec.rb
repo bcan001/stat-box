@@ -19,7 +19,23 @@ RSpec.describe "the user clicks on a sport to display the show", :type => :featu
 		# poltergeist
 		# mocha
 		# https://eddyerburgh.me/unit-test-vue-components-beginners
+
+		# INSTALLING THE TEST SUITE:
+		# Test runner: Karma
+		# Test framework: Mocha
+		# Assertions: Chai
+		# Mocking: Sinon
+		# Vue component testing: avoriaz
+		# Browser: jsdom
+		# Compiler: Webpack
 		# https://github.com/mplewis/rails-vue-frontend-test-example
+
+		# yarn test
+
+		# sinon js
+		# https://www.sitepoint.com/sinon-tutorial-javascript-testing-mocks-spies-stubs/
+
+
 	end
 
   
