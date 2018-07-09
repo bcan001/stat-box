@@ -1,1 +1,15 @@
-hello
+<!-- vue js divs / data import from rails controllers -->
+<%= javascript_pack_tag 'matches' %>
+
+<%= content_tag :div,
+  nil,
+  id: "matches",
+  data: { 
+    matches: @matches.to_json.html_safe
+  }
+%>
+<div id="matches-index"></div>
+
+
+
+
