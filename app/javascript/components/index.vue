@@ -96,7 +96,6 @@
                             {{ formatDate(match.match_datetime) }}
                           </div>
                         </div>
-                        
 
                         
                       </div>
@@ -104,9 +103,11 @@
   
 
                   </div>
+
+                  <div class="text-left pad5-top">
+                    <a v-bind:href="'/matches?sport=' + sport.name">View All {{ sport.name }} Matches</a>
+                  </div>
                 </div>
-
-
 
 
 
