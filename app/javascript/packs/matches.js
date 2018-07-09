@@ -10,7 +10,7 @@
 // custom components
 import Vue from 'vue/dist/vue.esm'
 // import Vue from 'vue'
-import Index from '../components/index.vue'
+import Matches from '../components/matches.vue'
 
 // import custom nested components
 // import Sports from '../components/sports.vue'
@@ -25,25 +25,25 @@ import Index from '../components/index.vue'
 
 
 document.addEventListener('DOMContentLoaded', () => {
-  document.body.appendChild(document.createElement('index'))
+  document.body.appendChild(document.createElement('matches'))
 
   // console.log('what up');
   // console.log('whatz up');
 
-  let sportsElement = document.getElementById("sports");
-  let sports = JSON.parse(sportsElement.dataset.sports);
+  let matchesElement = document.getElementById("matches");
+  let matches = JSON.parse(matchesElement.dataset.matches);
 
   // console.log(sports);
 
-  const index = new Vue({
+  const matchesIndex = new Vue({
     // el: 'index',
-    el: '#index-new',
+    el: '#matches-index',
     data: {
-      sports: sports
+      matches: matches
     },
-    template: '<Index :sports="sports"/>',
+    template: '<Matches :matches="matches"/>',
     components: { 
-      Index
+      Matches
     }
   })
 })
@@ -62,6 +62,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // node js
 // Vue.component('v-paginator',VuePaginator)
-
 
 
