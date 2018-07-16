@@ -72,6 +72,7 @@ class SportsController < ApplicationController
 			@sports_json << sport_json
 		end
 		@sports_json
+		# binding.pry
 	end
 
 end
